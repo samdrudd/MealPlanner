@@ -1,0 +1,31 @@
+<html>
+	<head>
+		<title>Meal Planner</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	</head>
+	
+	<body>
+	
+		<div ng-app="mealPlanner" ng-controller="mealPlannerCtrl">
+			<form>
+				<label>Recipe Name:</label><br>
+				<input type="text" ng-model="name" name="name"></input><br><br>
+				<label>Ingredients:</label><br>
+				<input type="text" ng-model="ingredient1"></input><br><br>
+				<label>Instructions:</label><br>
+				<textarea ng-model="instructions" rows="15" cols="50"></textarea><br><br><br>
+				<input type="submit" value="Add Recipe" ng-click="addRecipe()"></input>
+			</form>
+			
+			<ul>
+				<li ng-repeat="(id, recipe) in recipelist">
+					{{ recipe.name }}
+				</li>
+			</ul>
+		</div>
+	
+		<script src="mealPlannerApp.js"></script>
+		<script src="mealPlannerController.js"></script>
+	</body>
+</html>
+		
