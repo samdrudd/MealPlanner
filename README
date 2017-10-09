@@ -1,0 +1,5 @@
+MealPlanner is an app built with angular with the intention of offering the following:
+- Add, Edit, Remove, List recipes
+- Align stored recipes in a 7-day week to form a meal plan
+
+Licenses for any 3rd-party software used by this project can be found in the LICENSE file

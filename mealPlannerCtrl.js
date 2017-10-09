@@ -31,6 +31,10 @@ app.controller("mealPlannerCtrl", function($scope) {
 		$scope.recipelist[id] = recipe;
 	};
 
+	$scope.removeIngredient = function(id) {
+		$scope.ingredients.splice(id,1);
+	}
+
 	$scope.resetForm = function() {
 		$scope.name = "";
 		$scope.ingredients = [""];

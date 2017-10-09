@@ -1,7 +1,9 @@
 <html>
 	<head>
 		<title>Meal Planner</title>
+		<link rel="stylesheet" href="style.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+		<script src="https://use.fontawesome.com/f3009b4d7d.js"></script>
 	</head>
 	
 	<body>
@@ -12,8 +14,10 @@
 				<input type="text" ng-model="name" name="name"></input><br><br>
 				<label>Ingredients:</label><br>
 				<div ng-repeat="(id, ingredient) in ingredients track by $index">
+
 					<input type="text" ng-model="ingredients[id]"></input>
-					<input type="button" ng-click="addIngredient()" ng-show="$last" value="+"></input>
+					<i class="fa fa-minus-square" ng-click="removeIngredient(id)" ng-show="$last-1"></i>
+					<i class="fa fa-plus-square" ng-click="addIngredient()" ng-show="$last"></i>
 					<br><br ng-show="$last">
 				</div>
 				<label>Instructions:</label><br>
