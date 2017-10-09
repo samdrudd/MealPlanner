@@ -12,17 +12,18 @@
 				<input type="text" ng-model="name" name="name"></input><br><br>
 				<label>Ingredients:</label><br>
 				<div ng-repeat="(id, ingredient) in ingredients track by $index">
-					<input type="text" name="id" ng-model="ingredients[id]"></input>
+					<input type="text" ng-model="ingredients[id]"></input>
 					<input type="button" ng-click="addIngredient()" ng-show="$last" value="+"></input>
 					<br><br ng-show="$last">
 				</div>
 				<label>Instructions:</label><br>
 				<textarea ng-model="instructions" rows="15" cols="50"></textarea><br><br><br>
+				<input type="button" value="Reset" ng-click="resetForm()"></input>
 				<input type="submit" value="Add Recipe" ng-click="addRecipe()"></input>
 			</form>
 			
 			<ul>
-				<li ng-repeat="(id, recipe) in recipelist">
+				<li ng-repeat="recipe in recipelist">
 					{{ recipe.name }}
 					<ul>
 						<li ng-repeat="ingredient in recipe.ingredients">

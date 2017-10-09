@@ -3,7 +3,8 @@ app.controller("mealPlannerCtrl", function($scope) {
 	$scope.ingredients = [""];
 
 	$scope.addIngredient = function() {
-		$scope.ingredients.push("");
+		if ($scope.ingredients.length > 0 && $scope.ingredients[$scope.ingredients.length - 1].trim() != "")
+			$scope.ingredients.push("");
 	};
 	
 	$scope.addRecipe = function() {
@@ -19,13 +20,20 @@ app.controller("mealPlannerCtrl", function($scope) {
 		var recipe = {};
 		recipe['name'] = $scope.name;
 		recipe['ingredients'] = [];
-		console.log($scope.ingredients);
+		
 		for (var i = 0; i < $scope.ingredients.length; i++)
 		{
 			console.log($scope.ingredients[i]);
 			recipe['ingredients'].push($scope.ingredients[i]);
 		}
+		
 		recipe['instructions'] = $scope.instructions;
 		$scope.recipelist[id] = recipe;
 	};
+
+	$scope.resetForm = function() {
+		$scope.name = "";
+		$scope.ingredients = [""];
+		$scope.instructions = "";
+	}
 });
