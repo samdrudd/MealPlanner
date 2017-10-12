@@ -4,6 +4,7 @@
 		<link rel="stylesheet" href="style.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 		<script src="https://use.fontawesome.com/f3009b4d7d.js"></script>
+		<script  src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 	</head>
 	
 	<body>
@@ -11,31 +12,20 @@
 		<div ng-app="mealPlanner" ng-controller="mealPlannerCtrl">
 			<form>
 				<label>Recipe Name:</label><br>
-				<input type="text" ng-model="name" name="name"></input><br><br>
+				<input type="text" ng-model="recipe.name" name="title"></input><br><br>
 				<label>Ingredients:</label><br>
-				<div ng-repeat="(id, ingredient) in ingredients track by $index">
+				<div ng-repeat="(id, ingredient) in recipe.ingredients track by $index">
 
-					<input type="text" ng-model="ingredients[id]"></input>
-					<i class="fa fa-minus-square" ng-click="removeIngredient(id)" ng-show="$last-1"></i>
-					<i class="fa fa-plus-square" ng-click="addIngredient()" ng-show="$last"></i>
+					<input type="text" ng-model="recipe.ingredients[id]"></input>
+					<i class="fa fa-minus-square fa-3" ng-click="removeIngredient(id)" ng-show="$last-1"></i>
+					<i class="fa fa-plus-square fa-3" ng-click="addIngredient()" ng-show="$last"></i>
 					<br><br ng-show="$last">
 				</div>
 				<label>Instructions:</label><br>
-				<textarea ng-model="instructions" rows="15" cols="50"></textarea><br><br><br>
+				<textarea ng-model="recipe.instructions" rows="15" cols="50"></textarea><br><br><br>
 				<input type="button" value="Reset" ng-click="resetForm()"></input>
 				<input type="submit" value="Add Recipe" ng-click="addRecipe()"></input>
 			</form>
-			
-			<ul>
-				<li ng-repeat="recipe in recipelist">
-					{{ recipe.name }}
-					<ul>
-						<li ng-repeat="ingredient in recipe.ingredients">
-							{{ ingredient }}
-						</li>
-					</ul>
-				</li>
-			</ul>
 		</div>
 	
 		<script src="mealPlannerApp.js"></script>
