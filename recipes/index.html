@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<title>Meal Planner</title>
+		<link rel="stylesheet" href="../style.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+		<script src="https://use.fontawesome.com/f3009b4d7d.js"></script>
+	</head>
+	
+	<body>
+		<div ng-app="mealPlanner" ng-controller="mealPlannerCtrl" ng-init="getAllRecipes()">
+			<ul>
+				<li ng-repeat="recipe in recipelist">
+					<a href="#" ng-click="getRecipe(recipe._id)">{{ recipe.name }}</a>
+				</li>
+			</ul>
+		</div>
+	
+		<script src="../mealPlannerApp.js"></script>
+		<script src="../mealPlannerCtrl.js"></script>
+	</body>
+</html>
+		

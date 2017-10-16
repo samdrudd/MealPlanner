@@ -3,6 +3,7 @@ app.controller("mealPlannerCtrl", function($scope, $http) {
 	$scope.recipe.ingredients = [""];
 	$scope.recipe.name = "";
 	$scope.recipe.instructions = "";
+	$scope.recipelist = [];
 
 	$scope.addIngredient = function() {
 		if ($scope.recipe.ingredients.length > 0 && $scope.recipe.ingredients[$scope.recipe.ingredients.length - 1].trim() != "")
@@ -15,7 +16,7 @@ app.controller("mealPlannerCtrl", function($scope, $http) {
 			return;
 
 		$http({
-			url: "http://127.0.0.1:8000/recipe",
+			url: "http://127.0.0.1:8000/recipes",
 			method: "POST",
 			data: $.param($scope.recipe),
 			headers: { "Content-Type": "application/x-www-form-urlencoded"}})
@@ -36,4 +37,31 @@ app.controller("mealPlannerCtrl", function($scope, $http) {
 		$scope.recipe.ingredients = [""];
 		$scope.recipe.instructions = "";
 	}
+
+	$scope.getRecipe = function(id) {
+		console.log("in getrecipe, id: " + id);
+		$http({
+			url: "http://127.0.0.1:8000/recipes/" + id,
+			method: "GET",
+			headers: {"Content-Type" : "application/x-www-form-urlencoded"}})
+		.then(function successCallback(response) {
+			window.location.href = './view.html';
+			$scope.recipe = response.data;
+			console.log($scope.recipe);
+		}, function errorCallback(response) {
+			console.log(response.statusText);
+		});
+	};
+
+	$scope.getAllRecipes = function() {
+		$http({
+			url: "http://127.0.0.1:8000/recipes",
+			method: "GET",
+			headers: {"Content-Type" : "applicatio/x-www-form-urlencoded"}})
+		.then(function successCallback(response) {
+			$scope.recipelist = response.data;
+		}, function errorCallback(response) {
+			console.log(response.statusText);
+		});
+	};
 });

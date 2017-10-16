@@ -1,16 +1,16 @@
 <html>
 	<head>
-		<title>Meal Planner</title>
-		<link rel="stylesheet" href="style.css">
+		<title>Meal Planner - View Recipe</title>
+		<link rel="stylesheet" href="../style.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 		<script src="https://use.fontawesome.com/f3009b4d7d.js"></script>
 	</head>
 	
 	<body>
 	
-		<div ng-app="mealPlanner" ng-controller="mealPlannerCtrl">
+		<div ng-app="mealPlanner" ng-controller="mealPlannerCtrl"> 
 			<form>
-				<label>Recipe Name:</label><br>
+				<label>Recipe Name: {{ recipe._id }}</label><br>
 				<input type="text" ng-model="recipe.name"></input><br><br>
 
 				<label>Ingredients:</label><br>
@@ -29,8 +29,8 @@
 			</form>
 		</div>
 	
-		<script src="mealPlannerApp.js"></script>
-		<script src="mealPlannerCtrl.js"></script>
+		<script src="../mealPlannerApp.js"></script>
+		<script src="../mealPlannerCtrl.js"></script>
 	</body>
 </html>
 		
